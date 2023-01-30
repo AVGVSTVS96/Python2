@@ -1,0 +1,200 @@
+import random
+
+# Star Wars Interactive Game
+# Author: [GPT-3.5, Curated by Bassim Shahidy]
+
+# Welcome message
+print("Welcome to the Star Wars interactive game!")
+print("You have been given the chance to live out your own Star Wars adventure.")
+print("You can choose to play as:")
+print("1. Darth Sidious (Palpatine)")
+print("2. Anakin Skywalker")
+print("3. Obi-Wan Kenobi")
+
+# Get player input for character choice
+while True:
+    choice = input("Please select a character: ")
+    if choice in ["1", "2", "3"]:
+        break
+    else:
+        print("Invalid choice. Please select 1, 2 or 3.")
+
+# Set up character-specific storyline based on player choice
+if choice == "1":
+    print("You are Darth Sidious, a powerful Sith Lord.")
+    print("You have long been planning to take control of the galaxy.")
+    print("You must work to gain control of the senate and the military.")
+    reputation = 0
+    while reputation < 100:
+        print("You current reputation is:", reputation)
+        print("What would you like to do?")
+        print("1. Work to gain support")
+        print("2. Sabotage rival politician")
+        print("3. Make a deal with a powerful faction")
+        print("4. Run for senate")
+        print("5. Quit")
+        choice = input("Please select an action: ")
+        if choice == "1":
+            reputation += 10
+            print("You work to gain support and increase your reputation")
+        elif choice == "2":
+            reputation += 20
+            print("You sabotage rival politician and gain reputation")
+        elif choice == "3":
+            reputation += 30
+            print("You make a deal with a powerful faction and gain reputation")
+        elif choice == "4":
+            odds = reputation / 100
+            if odds >= 0 and odds <= 0.4:
+                print("Due to low reputation, your odds of winning are low.")
+            elif odds > 0.4 and odds <= 0.7:
+                print("Due to your reputation, your odds of winning are moderate.")
+            else:
+                print("Due to your reputation, your odds of winning are high.")
+            if odds >= 0 and odds <= 0.4:
+                print("You decide to run for senate, but due to your low reputation, you lose the election.")
+            elif odds > 0.4 and odds <= 0.7:
+                win = random.random()
+                if win <= odds:
+                    print("You decide to run for senate and with moderate odds, you win the election!")
+                    reputation += 50
+                else:
+                    print("You decide to run for senate, but unfortunately you lose the election.")
+            else:
+                win = random.random()
+                if win <= odds:
+                    print("You decide to run for senate and with high odds, you win the election!")
+                    reputation += 50
+                else:
+                    print("You decide to run for senate, but unfortunately you lose the election.")
+        elif choice == "5":
+            break
+    if reputation >= 100:
+        print("You win! You have taken control of the galaxy.")
+    else:
+        print("You were not able to take control of the galaxy.")
+elif choice == "2":
+    print("You are Anakin Skywalker, a young Jedi Knight.")
+    print("You have grown disillusioned with the Jedi Council and their ways.")
+    print("You must decide whether to follow the Jedi path or fall to the dark side.")
+    jedi_power = 50
+    while jedi_power >= 0:
+        print("Your current jedi power is:", jedi_power)
+        print("What would you like to do?")
+        print("1. Train with Jedi Council")
+        print("2. Listen to Darth Sidious")
+        print("3. Help the rebel alliance")
+        print("4. Quit")
+        choice = input("Please select an action: ")
+        if choice == "1":
+            jedi_power += 10
+            print("You train with Jedi Council and increase your jedi power")
+        elif choice == "2":
+            odds = (50 - jedi_power) / 50
+            win = random.random()
+            if win <= odds:
+                print("You listen to Darth Sidious and fall to the dark side.")
+                jedi_power = 0
+                print("Now that you have fallen to the dark side, what do you want to do?")
+                print("1. Kill the Jedi council")
+                print("2. Help Darth Sidious in his plans")
+                print("3. Quit")
+                end_choice = input("Please select an action: ")
+                if end_choice == "1":
+                    print("You killed the Jedi council, but ultimately you were killed by Luke Skywalker.")
+                    break
+                elif end_choice == "2":
+                    print("You helped Darth Sidious in his plans, but ultimately you were killed by Obi-Wan Kenobi.")
+                    break
+                else:
+                    print("You quit and hid in exile, but you never found peace.")
+                    break
+            else:
+                jedi_power -= 10
+                print("You listen to Darth Sidious but resist the urge to fall to the dark side.")
+        elif choice == "3":
+            jedi_power += 5
+            print("You help the rebel alliance and increase your jedi power.")
+        elif choice == "4":
+            break
+    if jedi_power >= 50:
+        print("You win! You have chosen the Jedi path.")
+    else:
+        print("You have chosen the dark side.")
+elif choice == "3":
+    print("You are Obi-Wan Kenobi, a wise Jedi Master.")
+    print("You have been tasked with uncovering the truth behind the growing conflict.")
+    print("What would you like to investigate?")
+    print("1. The Jedi Temple")
+    print("2. The Separatist Movement")
+    choice = input("Please select an option: ")
+    if choice == "1":
+        print("You decide to investigate the Jedi Temple.")
+        print("As you delve deeper, you discover a sinister plot to destroy the Jedi and take over the galaxy.")
+        print("You must navigate the treacherous political landscape to gather evidence and bring the plot to light.")
+        evidence = 0
+        while evidence < 50:
+            print("You currently have", evidence, "pieces of evidence.")
+            print("What would you like to do?")
+            print("1. Gather evidence from Jedi records")
+            print("2. Interview potential witnesses")
+            print("3. Help the rebel alliance")
+            print("4. Quit")
+            choice = input("Please select an action: ")
+            if choice == "1":
+                evidence += 10
+                print("You gather evidence from Jedi records and increase your total evidence.")
+            elif choice == "2":
+                odds = evidence / 50
+                interview_success = random.random()
+                if interview_success <= odds:
+                    evidence += 15
+                    print("You interview a potential witness and gain valuable evidence.")
+                else:
+                    print("You interview a potential witness but gain no new evidence.")
+            elif choice == "3":
+                evidence += 5
+                print("You help the rebel alliance and gain some new evidence.")
+            elif choice == "4":
+                break
+        if evidence >= 50:
+            print("You win! You have gathered enough evidence to bring the plot to light and save the Jedi.")
+        else:
+            print("You were not able to gather enough evidence in time, the plot succeeded and the Jedi are destroyed.")
+    elif choice == "2":
+        print("You decide to investigate the Separatist Movement.")
+        print("As you delve deeper, you discover a sinister plot to create a droid army and take over the galaxy.")
+        print("You must navigate the treacherous political landscape to gather evidence and stop the plot.")
+        evidence = 0
+        while evidence < 50:
+            print("You currently have", evidence, "pieces of evidence.")
+            print("What would you like to do?")
+            print("1. Gather evidence from Separatist records")
+            print("2. Interview potential informants")
+            print("3. Help the rebel alliance")
+            print("4. Quit")
+            choice = input("Please select an action: ")
+            if choice == "1":
+                evidence += 10
+                print("You gather evidence from Separatist records and increase your total evidence.")
+            elif choice == "2":
+                odds = evidence / 50
+                interview_success = random.random()
+                if interview_success <= odds:
+                    evidence += 15
+                    print("You interview a potential informant and gain valuable evidence.")
+                else:
+                    print("You interview a potential informant but gain no new evidence.")
+            elif choice == "3":
+                evidence += 5
+                print("You help the rebel alliance and gain some new evidence.")
+            elif choice == "4":
+                break
+        if evidence >= 50:
+            print("You win! You have gathered enough evidence to stop the plot and save the galaxy.")
+        else:
+            print("You were not able to gather enough evidence in time, the plot succeeded and the droid army conquers the galaxy.")
+
+
+               
+
