@@ -12,12 +12,12 @@ def generate_password():
         'symbols': '!@#$%^&*()-_=+[]{}\\|;:\'",.<>/?'
     }
     for option, keys in options.items():
-        if input(f"Include {option}case letters in the password? (y/n) ").lower() == 'y':
+        if input(f"Include {option} in the password? (y/n) ").lower() == 'y':
             choices.extend(list(keys))
 
     # filter the choices based on the side of the keyboard the user specified
     if side == 'left':
-        choices = [key for key in choices if key in 'qwertyuiopasdfghjklzxcvbnQWERTYUIOPASDFGHJKLZXCVBN54321%$#@!']
+        choices = [key for key in choices if key in 'qwertasdfgzxcvb12345!@#$%QWERASDFGZXCVB']
     elif side == 'right':
         choices = [key for key in choices if key in 'yuiophjklnmYUIOPHJKLNM67890^&*()-_=+[]{};:\'",.<>/?']
 

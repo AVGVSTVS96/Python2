@@ -46,7 +46,7 @@ void generate_password(char* password, int password_length, char* choices, int* 
         *choices_length += sizeof(symbols);
     }
 
-    char left_keys[] = "qwertyuiopasdfghjklzxcvbnQWERTYUIOPASDFGHJKLZXCVBN54321%$#@!";
+    char left_keys[] = "qwertasdfgzxcvb12345!@#$%QWERASDFGZXCVB";
     char right_keys[] = "yuiophjklnmYUIOPHJKLNM67890^&*()-_=+[]{};:\'\",.<>/?";
 
     if (side == 'left') 
